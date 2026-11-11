@@ -1,0 +1,11 @@
+#pragma once
+#include <touch/editor/document.hpp>
+#include <touch/engine/runtime.hpp>
+#include <touch/graph/graph.hpp>
+#include <touch/graph/types.hpp>
+#include <touch/media/types.hpp>
+#include <touch/operators/module.hpp>
+#include <touch/operators/registry.hpp>
+#include <touch/operators/types.hpp>
+#include <touch/plugins/manager.hpp>
+#include <touch/projects/repository.hpp>

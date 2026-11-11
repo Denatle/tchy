@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleExecutable</key><string>touch</string>
+<key>CFBundleIdentifier</key><string>org.touch.rewrite</string>
+<key>CFBundleName</key><string>Touch</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSCameraUsageDescription</key><string>Camera input for the node graph.</string>
+<key>NSMicrophoneUsageDescription</key><string>Microphone input for the node graph.</string>
+</dict></plist>

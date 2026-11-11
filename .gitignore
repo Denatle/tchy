@@ -1,0 +1,6 @@
+build*/
+vendor/imgui/
+.DS_Store
+imgui.ini
+*.app
+*.zip
