@@ -1,6 +1,6 @@
 # Tchy - Touchdesigner wannabe clone
 
-C++20, Dear ImGui (stock dark style), SDL3, OpenGL and FFmpeg libraries.
+C++20, ImGui, SDL3, OpenGL and FFmpeg libraries.
 
 ## Build on macOS
 
