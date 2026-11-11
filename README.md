@@ -1,11 +1,11 @@
-# Touch — C++ rewrite
+# Tchy - Touchdesigner wannabe clone
 
-C++20, Dear ImGui (stock dark style), SDL3, OpenGL and FFmpeg libraries. The Rust implementation in `../touch` remains the reference. The Go example in `../internal` informed the subsystem layout: public types/interfaces, concrete implementations and explicit composition are separated.
+C++20, Dear ImGui (stock dark style), SDL3, OpenGL and FFmpeg libraries.
 
 ## Build on macOS
 
 ```zsh
-./script.sh
+./build_macos.sh.sh
 open build/touch.app
 ```
 
@@ -33,7 +33,7 @@ Linux requires a C++20 compiler, CMake >=3.24, pkg-config, SDL3 >=3.2, json-c, O
 
 Windows uses the MSYS2 CLANG64 environment. Install `mingw-w64-clang-x86_64-{clang,cmake,ninja,pkgconf,sdl3,json-c,ffmpeg}` with pacman and configure with `-G Ninja`. Run from CLANG64 so dependent DLLs are available on PATH. The root `.github/workflows/rewrite.yml` contains exact CI commands for all three systems. Windows and Linux jobs have not been run locally.
 
-The macOS `.app` currently uses installed SDL3/FFmpeg/json-c libraries. It is a development bundle, not a self-contained signed distribution.
+The macOS `.app` currently uses installed SDL3/FFmpeg/json-c libraries.
 
 ## Editor
 
@@ -45,10 +45,3 @@ The macOS `.app` currently uses installed SDL3/FFmpeg/json-c libraries. It is a 
 - Files can be dropped onto the canvas. Use the inspector to edit parameters, choices, media paths, tables and channel selection. Parameters expose Control inputs for modulation.
 - Load Plugin adds `.dylib`, `.so` or `.dll` operators immediately. Settings → Stop and unload plugins releases instances before unloading. Reload a replacement library afterwards.
 
-Old JSON v1 projects are imported; saves use JSON v2 with stable operator and port keys. Missing plugins preserve their node settings and connections and report an execution error.
-
-## Validation
-
-CTest checks all 77 operator contracts, a legacy scene, project round-tripping, packed f16/u8 storage, alpha compositing, scan triggering, live plugin loading, audio resource release, generated FFmpeg files and ImGui draw data without an OS window. See [architecture](docs/architecture.md), [plugin SDK](docs/plugins.md) and [validation status](docs/validation.md).
-
-Actual camera/microphone permissions, interactive window behavior and device latency require a desktop session. They have not been validated by the headless UI test.
