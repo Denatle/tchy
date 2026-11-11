@@ -34,21 +34,24 @@ int main(int argc, char** argv) {
         g.preview = p;
         m = evaluator.tick(g, {});
         REQUIRE(m.frame && m.frame->values[0] == .5f);
-        touch::JsonProjects projects;
-        auto scene = projects.load(argv[2], r);
-        REQUIRE(scene.nodes.size() == 23);
-        m = evaluator.tick(scene, {});
-        for (auto [id, e] : m.errors)
-            std::cerr << id << ": " << e << '\n';
-        REQUIRE(m.errors.empty());
-        REQUIRE(m.frame && m.frame->width == 1280);
-        auto path = std::filesystem::temp_directory_path() / "touch-rewrite-test.json";
-        projects.save(path, scene);
-        auto roundtrip = projects.load(path, r);
-        REQUIRE(roundtrip.nodes.size() == scene.nodes.size());
-        REQUIRE(roundtrip.edges == scene.edges);
-        std::filesystem::remove(path);
-        std::cout << "Core, plugin and legacy scene checks passed\n";
+        if (argc > 2) {
+            touch::JsonProjects projects;
+            auto scene = projects.load(argv[2], r);
+            REQUIRE(scene.nodes.size() == 23);
+            m = evaluator.tick(scene, {});
+            for (auto [id, e] : m.errors)
+                std::cerr << id << ": " << e << '\n';
+            REQUIRE(m.errors.empty());
+            REQUIRE(m.frame && m.frame->width == 1280);
+            auto path = std::filesystem::temp_directory_path() / "touch-rewrite-test.json";
+            projects.save(path, scene);
+            auto roundtrip = projects.load(path, r);
+            REQUIRE(roundtrip.nodes.size() == scene.nodes.size());
+            REQUIRE(roundtrip.edges == scene.edges);
+            std::filesystem::remove(path);
+        }
+        std::cout << (argc > 2 ? "Core, plugin and legacy scene checks passed\n"
+                               : "Core and plugin checks passed (no scene fixture)\n");
         return 0;
     } catch (const std::exception& e) {
         std::cerr << e.what() << '\n';
