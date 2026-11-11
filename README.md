@@ -5,7 +5,7 @@ C++20, ImGui, SDL3, OpenGL and FFmpeg libraries.
 ## Build on macOS
 
 ```zsh
-./build_macos.sh.sh
+./build_macos.sh
 open build/touch.app
 ```
 
